@@ -88,8 +88,14 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
+     {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 5,
+        }
+    },
     {
-        'NAME': 'authentication.validators.ContainsLetterValidator',
+        'NAME': 'authentication.validators.ContainsDigitValidator',
     },
 ]
 
@@ -97,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 

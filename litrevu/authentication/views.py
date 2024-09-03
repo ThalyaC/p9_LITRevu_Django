@@ -35,7 +35,7 @@ def signup_page(request):
             user = form.save()
             # auto-login user
             login(request, user)
-            return redirect('login')
+            return redirect('home')
         
     return render(request, 'authentication/signup.html', context={'form': form})
 
