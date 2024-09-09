@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from litreview_app.models import Review, Ticket
+from . import forms
 
 """def homepage(request):
     return render(request, 'litreview_app/homepage.html')"""
@@ -10,12 +11,23 @@ def registration(request):
 
 @login_required
 def flow(request):
-    reviews = Review.objects.all()
-    return render(request, 'litreview_app/flow.html', {'reviews': reviews})
+    #reviews = Review.objects.all()
+    tickets = Ticket.objects.all() #08/09/24
+    return render(request, 'litreview_app/flow.html', {'tickets': tickets})
 
-@login_required
+@login_required #08/09/24
 def ticket_create(request):
-    return render(request, 'litreview_app/ticket_create.html')
+    form = forms.TicketForm()
+    if request.method == 'POST':
+        form = forms.TicketForm(request.POST, request.FILES)
+        if form.is_valid():
+            ticket = form.save(commit=False)
+            # enregistre que l'auteur est bien l'utilisateur connecté
+            ticket.author = request.user
+            # enregistre le ticket
+            ticket.save()
+            return redirect('home')
+    return render(request, 'litreview_app/ticket_create.html', context={'form': form})
 
 @login_required
 def review_create(request):

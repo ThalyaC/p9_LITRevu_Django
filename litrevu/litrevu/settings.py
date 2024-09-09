@@ -127,3 +127,7 @@ AUTH_USER_MODEL = 'authentication.User'
 LOGIN_URL = 'login'
 
 STATICFILES_DIRS = [BASE_DIR / "static",]
+
+# Pour les images, les téléchargements ici en local
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')

@@ -14,6 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#pour les média
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib import admin
 from django.urls import path
 #from litreview_app import views
@@ -26,7 +30,7 @@ urlpatterns = [
     #path('homepage/', litreview_app.views.homepage),
     path('registration/', litreview_app.views.registration, name='registration'),
     path('flow/', litreview_app.views.flow, name='home'),
-    #path('ticket_create/', litreview_app.views.ticket_create),
+    path('ticket_create/', litreview_app.views.ticket_create, name='Créer un ticket'),
     #path('review_create/', litreview_app.views.review_create),
     #path('review_ticket_create/', litreview_app.views.review_ticket_create),
     path('your_posts/', litreview_app.views.your_posts, name='your_posts'),
@@ -39,4 +43,9 @@ urlpatterns = [
     path('signup/', authentication.views.signup_page, name='signup'),
 ]
 
+# pour les média dans un environnement de développement
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
 urlpatterns += staticfiles_urlpatterns()
