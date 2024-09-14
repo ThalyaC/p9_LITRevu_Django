@@ -30,7 +30,7 @@ urlpatterns = [
     #path('homepage/', litreview_app.views.homepage),
     path('registration/', litreview_app.views.registration, name='registration'),
     path('flow/', litreview_app.views.flow, name='home'),
-    path('ticket_create/', litreview_app.views.ticket_create, name='Créer un ticket'),
+    path('ticket_create/', litreview_app.views.ticket_create, name='Creer_un_ticket'),
     #path('review_create/', litreview_app.views.review_create),
     #path('review_ticket_create/', litreview_app.views.review_ticket_create),
     path('your_posts/', litreview_app.views.your_posts, name='your_posts'),

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block content %}
+{% block content_connexion %}
     <p>{{ message }}</p>
     <form method="post">
         {{ form.as_p }}
@@ -7,7 +7,13 @@
         <button type="submit" >Se connecter</button>
     </form>
     <p>Inscrivez-vous maintenant !<a href="{% url 'signup' %}">S'inscrire</a></p>
-{% endblock content %} 
+{% endblock content_connexion %}
+{% block content %}
+    <div class="intro"><p>Intégrez la communauté de LITRevu</p>
+        <p>Consultez ou sollicitez une critique de livres</p>
+        <p>Publiez vos critiques de livres ou d’articles à la demande.</p>
+    </div>
+{% endblock content %}
 <!--<html>
     <head><title>LITRevu</title></head>
     

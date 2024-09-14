@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
-{% block content %}
+{% block content_title %}
     <h2>Flux</h2>
+    <form action="{% url 'Creer_un_ticket' %}">
+        <button onclick="submit">Demander une critique</button>
+    </form>
+{% endblock content_title %}
+
+{% block content %}
+   
     {% for ticket in tickets %}
-        <p>{{ ticket.date_created }}</p>
-        <p>Ticket - {{ ticket.author }} </p>
-        <p>{{ ticket.title }}</p>
-        <p>{{ ticket.description }}</p>
-        <img src="{{ ticket.image.url }}">
-        
+        <div class="ticket">
+            <p class="time">{{ ticket.date_created }}</p>
+            <p class="autor">Ticket - {{ ticket.author }} </p>
+            <p class="title_book">{{ ticket.title }}</p>
+            <p class="description">{{ ticket.description }}</p>
+            <img src="{{ ticket.image.url }}">
+        </div>
     {% endfor %}
 {% endblock content %}

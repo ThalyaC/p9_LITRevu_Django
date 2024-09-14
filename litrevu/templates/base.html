@@ -7,27 +7,46 @@
     
     <body>
         <header>
-            <div>
-                <h1>LITReview</h1>
+            <img src="../static/images/logo.jpg" alt="LITRevu" id="logo" />
+            <div class="container_bandeau">
                 {% if user.is_authenticated %}
-                    <p>Vous êtes connecté en tant que {{ request.user }}.</p>
-                    <nav>
+                    <div class="connect">
+                        <p>Vous êtes connecté(e) en tant que {{ request.user }}.</p>
+                        <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+                    </div>
+                    {% else %}
+                    <div class="connexion">
+                        {% block content_connexion %}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+                <img src="../static/images/logo.jpg" alt="LITRevu" id="logo" />
+                {% if user.is_authenticated %}
+                    <div class="nav">
                         <ul>
                             <li><a href="{% url 'home' %}">Flux</a></li>
                             <li><a href="{% url 'your_posts' %}">Vos posts</a></li>
                             <li><a href="{% url 'subscriptions' %}">Abonnements</a></li>
-                            <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                            
                         </ul>
-                    </nav>
+                    </div>
                 {% endif %}
             </div>
-            
         </header>
-        
-    
+
         <main>
-            {% block content %}
-            {% endblock %}
+            <div class="content_page">
+                <div class="title_page">
+                    {% block content_title %}
+                    {% endblock %}
+                </div>
+                
+                <div class="box content_block">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
         </main>
         
     

@@ -8,5 +8,7 @@
         {{ form.as_p }}
         {% csrf_token %}
         <button type="submit" >S’inscrire</button>
+        <button onclick="history.back()">Retour</button>
     </form>
+    
 {% endblock content %}
